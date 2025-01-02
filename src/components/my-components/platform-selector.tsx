@@ -4,6 +4,7 @@ import { Button, MenuContent, MenuItem, MenuRoot, MenuTrigger } from '@chakra-ui
 
 function PlatformSelector() {
   const {errors,data}= usePlatforms();
+  if (errors) return null ;
   return (
     <>
     <MenuRoot>
