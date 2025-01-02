@@ -30,7 +30,7 @@ function App() {
 
         {showAside && (
           <GridItem area="aside" paddingX={"5"}>
-            <GenreList changeGenre={handleGenre}/>
+            <GenreList selectedGenre={genre} changeGenre={handleGenre}/>
           </GridItem>
         )}
 
