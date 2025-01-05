@@ -35,7 +35,7 @@ function GenreList({ selectedGenre, changeGenre }: Props) {
                   src={getCroppedImage(g.image_background)}
                   borderRadius="70%"
                 />
-                <Text>{g.name}</Text>
+                <Text fontSize={"xl"}>{g.name}</Text>
               </Button>
             </HStack>
           </List.Item>
