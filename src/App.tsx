@@ -17,6 +17,7 @@ export interface GameQuery {
   genres: Genre | null;
   platforms: Platform | null;
   sortOrder: string | null;
+  search: string;
 }
 function App() {
   const showAside = useBreakpointValue({ base: false, lg: true });
@@ -34,7 +35,7 @@ function App() {
       }}
     >
       <GridItem paddingBottom={3} area="nav">
-        <NavBar />
+        <NavBar onSearch={(search: string) => setData({...data, search})}/>
       </GridItem>
 
       {showAside && (
