@@ -1,4 +1,5 @@
 import {
+  Box,
   Flex,
   Grid,
   GridItem,
@@ -12,6 +13,7 @@ import { Genre } from "./hooks/genre";
 import PlatformSelector from "./components/my-components/platform-selector";
 import { Platform } from "./hooks/games";
 import SortSelector from "./components/my-components/sort-selector";
+import Headding from "./components/my-components/headding";
 
 export interface GameQuery {
   genres: Genre | null;
@@ -48,22 +50,24 @@ function App() {
       )}
 
       <GridItem area="main">
-        <Flex
-          gapX={2}
-          paddingX={"1"}
-          marginBottom={"2"}
-        >
-          <PlatformSelector
-            platform={data.platforms}
-            onSelectPlatform={(p: Platform) =>
-              setData({ ...data, platforms: p })
-            }
-          />
-          <SortSelector
-            onSelectSort={(sortOrder) => setData({ ...data, sortOrder })}
-            sorting={data.sortOrder}
-          />
-        </Flex>
+        <Box paddingX={"1"}>
+          <Headding gameQuery={data}/>
+          <Flex
+            gapX={2}
+            marginBottom={"2"}
+          >
+            <PlatformSelector
+              platform={data.platforms}
+              onSelectPlatform={(p: Platform) =>
+                setData({ ...data, platforms: p })
+              }
+            />
+            <SortSelector
+              onSelectSort={(sortOrder) => setData({ ...data, sortOrder })}
+              sorting={data.sortOrder}
+            />
+          </Flex>
+        </Box>
         <GameGrid gameQuery={data} />
       </GridItem>
     </Grid>
