@@ -13,10 +13,10 @@ function GenreList({selectedGenre, changeGenre}: Props) {
   return (
     <>
       {errors && <Text>{errors}</Text>}
-    <List.Root variant="marker" paddingX={5} paddingY={5}>
+    <List.Root variant="plain" paddingX={0} paddingY={5}>
       {data?.map(g =>(
         <List.Item key={g.id} paddingY={"5px"}>
-        <HStack paddingRight={10} >
+        <HStack paddingRight={1} >
           <Button onClick={() => changeGenre(g)} variant={'ghost'} padding={0} colorPalette={selectedGenre?.id === g.id ? "green" : "gray"}>
             <Image boxSize="32px" src={getCroppedImage(g.image_background)}  borderRadius="70%" />
             <Text fontSize={"lg"} >{g.name}</Text>

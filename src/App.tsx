@@ -2,7 +2,6 @@ import {
   Flex,
   Grid,
   GridItem,
-  HStack,
   useBreakpointValue,
 } from "@chakra-ui/react";
 import NavBar from "./components/my-components/nav-bar";
@@ -34,7 +33,7 @@ function App() {
         lg: "200px 1fr",
       }}
     >
-      <GridItem area="nav">
+      <GridItem paddingBottom={3} area="nav">
         <NavBar />
       </GridItem>
 

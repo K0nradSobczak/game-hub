@@ -8,7 +8,7 @@ function ColorSwitch() {
   return (
     <HStack>
       <Switch colorScheme="-moz-initial" checked={colorMode === 'dark'} onChange={toggleColorMode} />
-      <Text>{colorMode} mode</Text>
+      <Text whiteSpace={"nowrap"}>{colorMode} mode</Text>
     </HStack>
   )
 }
