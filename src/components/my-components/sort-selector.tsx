@@ -1,19 +1,31 @@
-import { Button, MenuContent, MenuItem, MenuRoot, MenuTrigger, Text, VStack } from "@chakra-ui/react"
+import { Button, MenuContent, MenuItem, MenuRoot, MenuTrigger,  VStack, Text } from "@chakra-ui/react"
 
+interface Props {
+  onSelectSort: (sortOrder: string) => void;
+  sorting: string | null;
+}
 
-function SortSelector() {
+function SortSelector({onSelectSort, sorting}: Props) {
+  const sortOptions = [
+    { value: "-added", label: "Date added" },
+    { value: "-metacritic", label: "Popularity" },
+    { value: "name", label: "Name" },
+    { value: "-rating", label: "Average rating" },
+    { value: "-released", label: "Release date" },
+  ]
+  const sortOption = sortOptions.find((option) => option.value === sorting)
   return (
     <VStack>
       <MenuRoot>
         <MenuTrigger asChild>
-          <Button>Sort Selector</Button>
+          <Button>{ sortOption?.label || <Text>Sort Selector</Text>}</Button>
         </MenuTrigger>
-        <MenuContent>
-          <MenuItem value="Relevence">Relevence</MenuItem>
-          <MenuItem value="Date added">Date added</MenuItem>
-          <MenuItem value="Popularity">Popularity</MenuItem>
-          <MenuItem value="Name">Name</MenuItem>
-          <MenuItem value="Average rating">Average rating</MenuItem>
+        <MenuContent >
+          {sortOptions.map((option) => (
+            <MenuItem onClick={() => onSelectSort(option.value)} key={option.value} value={option.value}>
+              {option.label}
+            </MenuItem>
+          ))}
         </MenuContent>
       </MenuRoot>
     </VStack>

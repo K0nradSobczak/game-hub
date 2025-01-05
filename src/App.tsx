@@ -11,43 +11,52 @@ import SortSelector from "./components/my-components/sort-selector";
 export interface GameQuery {
   genres: Genre | null;
   platforms: Platform | null;
+  sortOrder: string | null;
 }
 function App() {
   const showAside = useBreakpointValue({ base: false, lg: true });
   const [data, setData] = useState<GameQuery>({} as GameQuery);
 
-
-
   return (
+    <Grid
+      templateAreas={{
+        base: `"nav" "main"`,
+        lg: `"nav nav" "aside main"`,
+      }}
+      templateColumns={{
+        base: "1fr",
+        lg: "200px 1fr",
+      }}
+    >
+      <GridItem area="nav">
+        <NavBar />
+      </GridItem>
 
-      <Grid
-        templateAreas={{
-          base: `"nav" "main"`,
-          lg: `"nav nav" "aside main"`,
-        }}
-        templateColumns={{
-          base: "1fr",
-          lg: '200px 1fr'
-        }}
-      >
-        <GridItem area="nav">
-          <NavBar/>
+      {showAside && (
+        <GridItem area="aside" paddingX={"5"}>
+          <GenreList
+            selectedGenre={data.genres}
+            changeGenre={(g: Genre) => setData({ ...data, genres: g })}
+          />
         </GridItem>
+      )}
 
-        {showAside && (
-          <GridItem area="aside" paddingX={"5"}>
-            <GenreList selectedGenre={data.genres} changeGenre={(g: Genre) => setData({...data,genres: g})}/>
-          </GridItem>
-        )}
-
-        <GridItem area="main" >
-          <HStack  spaceX={0} paddingX={"1"} marginBottom={"2"}>
-            <PlatformSelector platform={data.platforms} onSelectPlatform={(p: Platform) => setData({...data,platforms: p})}/>
-          <SortSelector/>
-          </HStack>
-          <GameGrid gameQuery={data}/>
-        </GridItem>
-      </Grid>
+      <GridItem area="main">
+        <HStack spaceX={0} paddingX={"1"} marginBottom={"2"}>
+          <PlatformSelector
+            platform={data.platforms}
+            onSelectPlatform={(p: Platform) =>
+              setData({ ...data, platforms: p })
+            }
+          />
+          <SortSelector
+            onSelectSort={(sortOrder) => setData({ ...data, sortOrder })}
+            sorting={data.sortOrder}
+          />
+        </HStack>
+        <GameGrid gameQuery={data} />
+      </GridItem>
+    </Grid>
   );
 }
 
