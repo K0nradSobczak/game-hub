@@ -1,32 +1,48 @@
-import useGenre, { Genre } from "@/hooks/genre"
+import useGenre, { Genre } from "@/hooks/genre";
 import getCroppedImage from "@/services/images";
-import { HStack, List, Image, Text, Spinner, Button } from "@chakra-ui/react";
+import { HStack, List, Image, Text, Spinner, Button, Heading } from "@chakra-ui/react";
+
 
 interface Props {
   changeGenre: (genre: Genre) => void;
   selectedGenre: Genre | null;
 }
 
-function GenreList({selectedGenre, changeGenre}: Props) {
-  const {data, errors, isLoading} = useGenre()
-  if (isLoading) return <Spinner/>
+function GenreList({ selectedGenre, changeGenre }: Props) {
+  const { data, errors, isLoading } = useGenre();
+  if (isLoading) return <Spinner />;
   return (
     <>
       {errors && <Text>{errors}</Text>}
-    <List.Root variant="plain" paddingX={0} paddingY={5}>
-      {data?.map(g =>(
-        <List.Item key={g.id} paddingY={"5px"}>
-        <HStack paddingRight={1} >
-          <Button onClick={() => changeGenre(g)} variant={'ghost'} padding={0} colorPalette={selectedGenre?.id === g.id ? "green" : "gray"}>
-            <Image boxSize="32px" src={getCroppedImage(g.image_background)}  borderRadius="70%" />
-            <Text fontSize={"lg"} >{g.name}</Text>
-          </Button>
-        </HStack>
-        </List.Item>
+      <Heading fontSize={"2xl"} marginLeft={1}>Genres</Heading>
+      <List.Root variant="plain" paddingX={0} paddingY={5}>
+        {data?.map((g) => (
+          <List.Item key={g.id} paddingY={"5px"}>
+            <HStack paddingStart={1} alignItems={"center"} paddingRight={1}>
+              <Button
+                whiteSpace={"normal"}
+                textAlign="left"
+                onClick={() => changeGenre(g)}
+                variant={"ghost"}
+                padding={0}
+                colorPalette={selectedGenre?.id === g.id ? "green" : "gray"}
+                width={"100%"}
+                justifyContent={"flex-start"}
+              >
+                <Image
+                  boxSize="32px"
+                  objectFit={"cover"}
+                  src={getCroppedImage(g.image_background)}
+                  borderRadius="70%"
+                />
+                <Text>{g.name}</Text>
+              </Button>
+            </HStack>
+          </List.Item>
         ))}
-    </List.Root>
+      </List.Root>
     </>
-  )
+  );
 }
 
-export default GenreList
+export default GenreList;
