@@ -15,6 +15,7 @@ export interface Games {
   background_image: string;
   platforms: { platform: Platform }[];
   genre: Genre;
+  rating_top: number;
 }
 
 const useGames = (gameQuery: GameQuery) =>
