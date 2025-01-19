@@ -1,10 +1,9 @@
-import { Platform } from '@/hooks/games';
-import usePlatforms from '@/hooks/platforms'
+import usePlatforms, { Platforms } from '@/hooks/platforms'
 import { Button, MenuContent, MenuItem, MenuRoot, MenuTrigger,Text, VStack } from '@chakra-ui/react'
 
 interface Props {
-  onSelectPlatform: (platform: Platform) => void;
-  platform: Platform | null;
+  onSelectPlatform: (platform: Platforms) => void;
+  platform: Platforms | null;
 }
 
 function PlatformSelector({onSelectPlatform, platform}: Props) {
@@ -18,7 +17,7 @@ function PlatformSelector({onSelectPlatform, platform}: Props) {
           <Button  variant={'outline'}  colorPalette={"grey"}>{platform?.name || <Text>Platform</Text>}</Button>
           </MenuTrigger>
         <MenuContent width={'100%'}>
-          {data.map(p => (<MenuItem onClick={() => onSelectPlatform(p)} key={p.slug} value={p.slug}>{p.name}</MenuItem>))}
+          {data?.results.map(p => (<MenuItem onClick={() => onSelectPlatform(p)} key={p.slug} value={p.slug}>{p.name}</MenuItem>))}
         </MenuContent>
       </MenuRoot>
     </VStack>

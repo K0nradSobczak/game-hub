@@ -1,10 +1,10 @@
-import { Platform } from "@/hooks/games";
+import { Platforms } from "@/hooks/platforms";
 import { HStack } from "@chakra-ui/react";
 import { FaWindows, FaPlaystation, FaXbox, FaApple, FaLinux, FaAndroid } from "react-icons/fa";
 import { SiNintendo } from "react-icons/si";
 
 interface Props {
-  platform: Platform[];
+  platform: Platforms[];
 }
 
 function PlatformIconList({ platform }: Props) {

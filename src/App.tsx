@@ -11,13 +11,13 @@ import GenreList from "./components/my-components/genre-list";
 import { useState } from "react";
 import { Genre } from "./hooks/genre";
 import PlatformSelector from "./components/my-components/platform-selector";
-import { Platform } from "./hooks/games";
 import SortSelector from "./components/my-components/sort-selector";
 import Headding from "./components/my-components/headding";
+import { Platforms } from "./hooks/platforms";
 
 export interface GameQuery {
   genres: Genre | null;
-  platforms: Platform | null;
+  platforms: Platforms | null;
   sortOrder: string | null;
   search: string;
 }
@@ -37,7 +37,7 @@ function App() {
       }}
     >
       <GridItem paddingBottom={3} area="nav">
-        <NavBar onSearch={(search: string) => setData({...data, search})}/>
+        <NavBar onSearch={(search: string) => setData({ ...data, search })} />
       </GridItem>
 
       {showAside && (
@@ -51,14 +51,11 @@ function App() {
 
       <GridItem area="main">
         <Box paddingX={"1"}>
-          <Headding gameQuery={data}/>
-          <Flex
-            gapX={2}
-            marginBottom={"2"}
-          >
+          <Headding gameQuery={data} />
+          <Flex gapX={2} marginBottom={"2"}>
             <PlatformSelector
               platform={data.platforms}
-              onSelectPlatform={(p: Platform) =>
+              onSelectPlatform={(p: Platforms) =>
                 setData({ ...data, platforms: p })
               }
             />

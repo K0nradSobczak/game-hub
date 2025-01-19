@@ -1,4 +1,5 @@
 import ApiClient from "@/services/api-client";
+import { useQuery } from "@tanstack/react-query";
 import { AxiosRequestConfig, CanceledError } from "axios";
 import { useEffect, useState } from "react";
 
@@ -33,5 +34,14 @@ const useData = <Entity>(URL: string, params?: AxiosRequestConfig, deps?: any[])
 
     return {errors, data, isLoading}
 };
+
+export const useData2 = <Entity>(URL: string, key: string,params?: AxiosRequestConfig, staleTime?: number) => useQuery({
+  queryKey: [key, params],
+  queryFn: () =>
+    ApiClient
+      .get<getAllRequest<Entity>>(URL, {...params})
+      .then(res => res.data),
+  staleTime: staleTime ? staleTime : 24 * 60 * 60 * 1000
+})
 
 export default useData;
