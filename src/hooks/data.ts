@@ -3,7 +3,7 @@ import { AxiosRequestConfig, CanceledError } from "axios";
 import { useEffect, useState } from "react";
 
 
-interface getAllRequest<Data> {
+export interface getAllRequest<Data> {
   counts: number;
   results: Data[];
 }

@@ -9,14 +9,14 @@ interface Props {
 }
 
 function GenreList({ selectedGenre, changeGenre }: Props) {
-  const { data, errors, isLoading } = useGenre();
+  const { data, error, isLoading } = useGenre();
   if (isLoading) return <Spinner />;
   return (
     <>
-      {errors && <Text>{errors}</Text>}
+      {error && <Text>{error.message}</Text>}
       <Heading fontSize={"2xl"} marginLeft={1}>Genres</Heading>
       <List.Root variant="plain" paddingX={0} paddingY={5}>
-        {data?.map((g) => (
+        {data?.results.map((g: Genre) => (
           <List.Item key={g.id} paddingY={"5px"}>
             <HStack paddingStart={1} alignItems={"center"} paddingRight={1}>
               <Button
