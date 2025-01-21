@@ -6,6 +6,7 @@ import { AxiosRequestConfig } from "axios";
 
 export interface getAllRequest<Data> {
   counts: number;
+  next: string | null;
   results: Data[];
 }
 
