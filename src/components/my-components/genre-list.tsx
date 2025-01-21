@@ -1,11 +1,18 @@
 import useGenre, { Genre } from "@/hooks/genre";
 import getCroppedImage from "@/services/images";
-import { HStack, List, Image, Text, Spinner, Button, Heading } from "@chakra-ui/react";
-
+import {
+  HStack,
+  List,
+  Image,
+  Text,
+  Spinner,
+  Button,
+  Heading,
+} from "@chakra-ui/react";
 
 interface Props {
   changeGenre: (genre: Genre) => void;
-  selectedGenre: Genre | null;
+  selectedGenre: number | null;
 }
 
 function GenreList({ selectedGenre, changeGenre }: Props) {
@@ -14,7 +21,9 @@ function GenreList({ selectedGenre, changeGenre }: Props) {
   return (
     <>
       {error && <Text>{error.message}</Text>}
-      <Heading fontSize={"2xl"} marginLeft={1}>Genres</Heading>
+      <Heading fontSize={"2xl"} marginLeft={1}>
+        Genres
+      </Heading>
       <List.Root variant="plain" paddingX={0} paddingY={5}>
         {data?.results.map((g: Genre) => (
           <List.Item key={g.id} paddingY={"5px"}>
@@ -25,7 +34,7 @@ function GenreList({ selectedGenre, changeGenre }: Props) {
                 onClick={() => changeGenre(g)}
                 variant={"ghost"}
                 padding={0}
-                colorPalette={selectedGenre?.id === g.id ? "green" : "gray"}
+                colorPalette={selectedGenre === g.id ? "green" : "gray"}
                 width={"100%"}
                 justifyContent={"flex-start"}
               >

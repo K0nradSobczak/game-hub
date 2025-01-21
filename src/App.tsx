@@ -16,8 +16,8 @@ import Headding from "./components/my-components/headding";
 import { Platforms } from "./hooks/platforms";
 
 export interface GameQuery {
-  genres: Genre | null;
-  platforms: Platforms | null;
+  genreId: number | null;
+  platformId: number | null;
   sortOrder: string | null;
   search: string;
 }
@@ -43,20 +43,20 @@ function App() {
       {showAside && (
         <GridItem area="aside" paddingX={"5"}>
           <GenreList
-            selectedGenre={data.genres}
-            changeGenre={(g: Genre) => setData({ ...data, genres: g })}
+            selectedGenre={data.genreId}
+            changeGenre={(g: Genre) => setData({ ...data, genreId: g.id })}
           />
         </GridItem>
       )}
 
       <GridItem area="main">
         <Box paddingX={"1"}>
-          <Headding gameQuery={data} />
+        <Headding gameQuery={data} />
           <Flex gapX={2} marginBottom={"2"}>
             <PlatformSelector
-              platform={data.platforms}
+              platform={data.platformId}
               onSelectPlatform={(p: Platforms) =>
-                setData({ ...data, platforms: p })
+                setData({ ...data, platformId: p.id })
               }
             />
             <SortSelector
