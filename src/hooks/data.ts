@@ -1,6 +1,7 @@
 import ApiClient from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
 import { AxiosRequestConfig } from "axios";
+import ms from "ms";
 
 
 
@@ -17,5 +18,5 @@ export const useData2 = <Entity>(URL: string, key: string,params?: AxiosRequestC
     ApiClient
       .get<getAllRequest<Entity>>(URL, {...params})
       .then(res => res.data),
-  staleTime: staleTime ? staleTime : 24 * 60 * 60 * 1000
+  staleTime: staleTime ? staleTime : ms('1d')
 })

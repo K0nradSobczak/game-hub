@@ -4,6 +4,7 @@ import { Genre } from "./genre";
 import { Platforms } from "./platforms";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { HttpClient } from "@/services/api-client";
+import ms from 'ms';
 
 const client = new HttpClient<Games>("/games");
 export interface Games {
@@ -31,7 +32,7 @@ const useGames = (gameQuery: GameQuery) => {
           page: pageParam,
         },
       }),
-    staleTime: 3 * 100_000,
+    staleTime: ms('1d'),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPage) => {
       return lastPage.next ? allPage.length + 1 : undefined;
