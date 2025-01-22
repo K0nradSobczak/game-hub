@@ -54,7 +54,7 @@ function App() {
         <Headding gameQuery={data} />
           <Flex gapX={2} marginBottom={"2"}>
             <PlatformSelector
-              platform={data.platformId}
+              platformId={data.platformId}
               onSelectPlatform={(p: Platforms) =>
                 setData({ ...data, platformId: p.id })
               }
