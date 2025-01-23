@@ -9,7 +9,7 @@ export interface Genre {
 }
 
 const useGenre = () => useData2<Genre>('/genres', 'genre');
-export const findGenre = (id: number | null) =>{
+export const findGenre = (id: number | undefined) =>{
   const {data} = useGenre();
     return data?.results.find(p => p?.id === id)
 }

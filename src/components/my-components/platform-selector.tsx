@@ -1,4 +1,5 @@
-import usePlatforms, { findPlatform, Platforms } from "@/hooks/platforms";
+import usePlatforms, { findPlatform } from "@/hooks/platforms";
+import storeGames from "@/store/game-query";
 import {
   Button,
   MenuContent,
@@ -9,13 +10,10 @@ import {
   VStack,
 } from "@chakra-ui/react";
 
-interface Props {
-  onSelectPlatform: (platform: Platforms) => void;
-  platformId: number | null;
-}
-
-function PlatformSelector({ onSelectPlatform, platformId }: Props) {
+function PlatformSelector() {
   const { data } = usePlatforms();
+  const platformId = storeGames(s => s.gameQuery.platformId);
+  const setPlatform = storeGames(s => s.setPlatform);
   const selectedPlatform = findPlatform(platformId);
   return (
     <>
@@ -29,7 +27,7 @@ function PlatformSelector({ onSelectPlatform, platformId }: Props) {
           <MenuContent width={"100%"}>
             {data?.results.map((p) => (
               <MenuItem
-                onClick={() => onSelectPlatform(p)}
+                onClick={() => setPlatform(p.id)}
                 key={p.slug}
                 value={p.slug}
               >

@@ -11,10 +11,10 @@ const ApiClient = axios.create({
 export class HttpClient<Entity> {
   constructor(private URL: string) {};
 
-  getAll = (params?: AxiosRequestConfig) => {
-    return ApiClient
-          .get<getAllRequest<Entity>>(this.URL, {...params})
-          .then(res => res.data);
+  getAll = async (params?: AxiosRequestConfig) => {
+    const res = await ApiClient
+      .get<getAllRequest<Entity>>(this.URL, { ...params });
+    return res.data;
   }
   create = (params?: AxiosRequestConfig) => {
     return ApiClient

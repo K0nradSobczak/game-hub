@@ -1,11 +1,10 @@
+import storeGames  from "@/store/game-query"
 import { Button, MenuContent, MenuItem, MenuRoot, MenuTrigger,  VStack, Text } from "@chakra-ui/react"
 
-interface Props {
-  onSelectSort: (sortOrder: string) => void;
-  sorting: string | null;
-}
 
-function SortSelector({onSelectSort, sorting}: Props) {
+
+function SortSelector() {
+  const { sortedBy, gameQuery } = storeGames();
   const sortOptions = [
     { value: "-added", label: "Date added" },
     { value: "-metacritic", label: "Popularity" },
@@ -13,7 +12,7 @@ function SortSelector({onSelectSort, sorting}: Props) {
     { value: "-rating", label: "Average rating" },
     { value: "-released", label: "Release date" },
   ]
-  const sortOption = sortOptions.find((option) => option.value === sorting)
+  const sortOption = sortOptions.find((option) => option.value === gameQuery.sortOrder)
   return (
     <VStack>
       <MenuRoot>
@@ -22,7 +21,7 @@ function SortSelector({onSelectSort, sorting}: Props) {
         </MenuTrigger>
         <MenuContent >
           {sortOptions.map((option) => (
-            <MenuItem onClick={() => onSelectSort(option.value)} key={option.value} value={option.value}>
+            <MenuItem onClick={() => sortedBy(option.value)} key={option.value} value={option.value}>
               {option.label}
             </MenuItem>
           ))}

@@ -8,22 +8,14 @@ import {
 import NavBar from "./components/my-components/nav-bar";
 import GameGrid from "./components/my-components/game-grid";
 import GenreList from "./components/my-components/genre-list";
-import { useState } from "react";
-import { Genre } from "./hooks/genre";
 import PlatformSelector from "./components/my-components/platform-selector";
 import SortSelector from "./components/my-components/sort-selector";
 import Headding from "./components/my-components/headding";
-import { Platforms } from "./hooks/platforms";
 
-export interface GameQuery {
-  genreId: number | null;
-  platformId: number | null;
-  sortOrder: string | null;
-  search: string;
-}
+
 function App() {
   const showAside = useBreakpointValue({ base: false, lg: true });
-  const [data, setData] = useState<GameQuery>({} as GameQuery);
+
 
   return (
     <Grid
@@ -37,35 +29,24 @@ function App() {
       }}
     >
       <GridItem paddingBottom={3} area="nav">
-        <NavBar onSearch={(search: string) => setData({ ...data, search })} />
+        <NavBar  />
       </GridItem>
 
       {showAside && (
         <GridItem area="aside" paddingX={"5"}>
-          <GenreList
-            selectedGenre={data.genreId}
-            changeGenre={(g: Genre) => setData({ ...data, genreId: g.id })}
-          />
+          <GenreList/>
         </GridItem>
       )}
 
       <GridItem area="main">
         <Box paddingX={"1"}>
-        <Headding gameQuery={data} />
+        <Headding/>
           <Flex gapX={2} marginBottom={"2"}>
-            <PlatformSelector
-              platformId={data.platformId}
-              onSelectPlatform={(p: Platforms) =>
-                setData({ ...data, platformId: p.id })
-              }
-            />
-            <SortSelector
-              onSelectSort={(sortOrder) => setData({ ...data, sortOrder })}
-              sorting={data.sortOrder}
-            />
+            <PlatformSelector/>
+            <SortSelector/>
           </Flex>
         </Box>
-        <GameGrid gameQuery={data} />
+        <GameGrid/>
       </GridItem>
     </Grid>
   );

@@ -1,4 +1,4 @@
-import { GameQuery } from "@/App";
+import storeGames  from "@/store/game-query";
 import { getAllRequest} from "./data";
 import { Genre } from "./genre";
 import { Platforms } from "./platforms";
@@ -19,7 +19,8 @@ export interface Games {
 
 
 
-const useGames = (gameQuery: GameQuery) => {
+const useGames = () => {
+  const gameQuery  = storeGames(s => s.gameQuery);
  return useInfiniteQuery<getAllRequest<Games>, Error>({
     queryKey: ["games", gameQuery],
     queryFn: ({ pageParam = 1 }) =>
