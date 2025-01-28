@@ -26,6 +26,12 @@ export class HttpClient<Entity> {
             .delete<Entity>(this.URL + `/${id}`)
   }
 
+  get = async (id: string | number) => {
+    const res =await ApiClient
+            .get<Entity>(this.URL + `/${id}`).then(res => res.data);
+
+    return res;
+  }
 }
 
 export default ApiClient

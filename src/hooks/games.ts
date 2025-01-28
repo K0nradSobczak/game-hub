@@ -9,6 +9,7 @@ import ms from 'ms';
 const client = new HttpClient<Games>("/games");
 export interface Games {
   id: number;
+  slug: string;
   name: string;
   metacritic: number;
   background_image: string;
