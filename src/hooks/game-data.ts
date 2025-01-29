@@ -1,14 +1,7 @@
 import { HttpClient } from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
 import ms from "ms";
-
-interface GameDetails {
-    id: number,
-    slug: string,
-    name: string,
-    name_original: string,
-    description: string,
-}
+import { GameDetails } from "../request/GameDetails";
 
 const client = new HttpClient<GameDetails>('/games');
 

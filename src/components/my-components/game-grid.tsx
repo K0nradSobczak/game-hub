@@ -1,4 +1,5 @@
-import useGames, { Games } from "@/hooks/games";
+import useGames from "@/hooks/games";
+import { Games } from "@/request/Game";
 import { SimpleGrid, Skeleton, Spinner, Text } from "@chakra-ui/react";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";

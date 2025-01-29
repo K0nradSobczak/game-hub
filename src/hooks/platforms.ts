@@ -1,10 +1,5 @@
 import { useData2 } from "./data";
-
-export interface Platforms {
-  id: number;
-  name: string;
-  slug: string;
-}
+import { Platforms } from "../request/Platforms";
 
 const usePlatforms = () =>
   useData2<Platforms>("/platforms/lists/parents", "platforms");

@@ -1,12 +1,5 @@
 import {  useData2 } from "./data";
-
-export interface Genre {
-  id: number;
-  name: string;
-  slug: string;
-  games_count: number;
-  image_background: string;
-}
+import { Genre } from "../request/Genre";
 
 const useGenre = () => useData2<Genre>('/genres', 'genre');
 export const findGenre = (id: number | undefined) =>{
