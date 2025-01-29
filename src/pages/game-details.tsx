@@ -1,24 +1,27 @@
+import ExpandableText from "@/components/my-components/expandable-text";
 import useGameDetails from "@/hooks/game-data";
-import { Box, Heading, Spinner, Text } from "@chakra-ui/react";
+import { Box, Heading, Spinner } from "@chakra-ui/react";
 import { htmlToText } from "html-to-text";
 import { useParams } from "react-router-dom";
 
 function GameDetails() {
   const { id } = useParams();
-  const {data: gameDetails, isLoading, error} = useGameDetails(id!);
-  const desc: string | undefined = gameDetails?.description;;
-  if (isLoading) return <Spinner/>
+  const { data: gameDetails, isLoading, error } = useGameDetails(id!);
+  const desc: string | undefined = gameDetails?.description;
+
+  const formatedDescription = desc
+    ? htmlToText(desc, {
+        wordwrap: 130,
+      })
+    : "lorem";
+
+  if (isLoading) return <Spinner />;
   if (error) throw new Error(error.message);
+
   return (
-    <Box>
+    <Box padding={10}>
       <Heading size={"2xl"}>{gameDetails?.name_original}</Heading>
-      <Text>
-        {desc
-          ? htmlToText(desc, {
-              wordwrap: 130,
-            })
-          : <Spinner/>}
-      </Text>
+      <ExpandableText children={formatedDescription} limit={200}/>
     </Box>
   );
 }
