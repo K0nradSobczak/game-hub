@@ -1,5 +1,6 @@
 import ExpandableText from "@/components/my-components/expandable-text";
 import GameAttributes from "@/components/my-components/game-attributes";
+import Screenshots from "@/components/my-components/screenshots";
 import Video from "@/components/my-components/video";
 import useGameDetails from "@/hooks/game-data";
 import { Box, Heading, Spinner } from "@chakra-ui/react";
@@ -26,6 +27,7 @@ function GameDetails() {
       <ExpandableText children={formatedDescription} limit={200}/>
       <Video id={gameDetails?.id!}/>
       <GameAttributes gameDetails={gameDetails}/>
+      <Screenshots id={gameDetails?.id!} />
     </Box>
   );
 }
