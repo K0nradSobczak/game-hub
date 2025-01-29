@@ -32,6 +32,7 @@ export class HttpClient<Entity> {
 
     return res;
   }
+
 }
 
 export default ApiClient

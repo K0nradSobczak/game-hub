@@ -1,5 +1,6 @@
 import ExpandableText from "@/components/my-components/expandable-text";
 import GameAttributes from "@/components/my-components/game-attributes";
+import Video from "@/components/my-components/video";
 import useGameDetails from "@/hooks/game-data";
 import { Box, Heading, Spinner } from "@chakra-ui/react";
 import { htmlToText } from "html-to-text";
@@ -20,9 +21,10 @@ function GameDetails() {
   if (error) throw new Error(error.message);
 
   return (
-    <Box padding={10}>
+    <Box padding={4}>
       <Heading size={"2xl"}>{gameDetails?.name_original}</Heading>
       <ExpandableText children={formatedDescription} limit={200}/>
+      <Video id={gameDetails?.id!}/>
       <GameAttributes gameDetails={gameDetails}/>
     </Box>
   );
