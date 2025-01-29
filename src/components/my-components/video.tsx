@@ -14,7 +14,7 @@ function Video({id}: Props) {
   return video1 ? (
     <>
     <video
-      src={video1.data['max']}
+      src={video1.data['480']}
       poster={video1.preview}
       controls/>
     </>

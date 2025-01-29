@@ -17,7 +17,7 @@ function ExpandableText({ children, limit }: Props) {
   return (
     <>
       <Text>
-        {summary}<Button variant={'outline'} fontWeight={'bold'} size={'xs'} onClick={handleClick}>Show {expended ? "Less" : "More"}</Button>
+        {summary}<Button margin={1} variant={'outline'} fontWeight={'bold'} size={'xs'} onClick={handleClick}>Show {expended ? "Less" : "More"}</Button>
       </Text>
     </>
   );
