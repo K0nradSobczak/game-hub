@@ -1,7 +1,7 @@
 import { SimpleGrid, Text } from "@chakra-ui/react"
 import GameSection from "./game-section"
 import Metacritic from "./metacritic"
-import { GameDetails } from "@/request/GameDetails"
+import GameDetails from "@/request/GameDetails"
 interface Props {
   gameDetails: GameDetails | undefined;
 }

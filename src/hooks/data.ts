@@ -2,7 +2,7 @@ import ApiClient from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
 import { AxiosRequestConfig } from "axios";
 import ms from "ms";
-import { getAllRequest } from "@/request/getAllRequest";
+import getAllRequest from "@/request/getAllRequest";
 
 
 

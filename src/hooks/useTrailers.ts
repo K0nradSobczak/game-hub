@@ -1,4 +1,4 @@
-import { GameTrailers } from "@/request/TrailerList";
+import GameTrailers from "@/request/TrailerList";
 import { HttpClient } from "@/services/api-client";
 import { useQuery } from "@tanstack/react-query";
 import ms from "ms";

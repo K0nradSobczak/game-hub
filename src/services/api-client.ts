@@ -1,4 +1,4 @@
-import { getAllRequest } from "@/request/getAllRequest";
+import getAllRequest from "@/request/getAllRequest";
 import axios, { AxiosRequestConfig } from "axios";
 
 const ApiClient = axios.create({

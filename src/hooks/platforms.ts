@@ -1,5 +1,5 @@
 import { useData2 } from "./data";
-import { Platforms } from "../request/Platforms";
+import Platforms from "../request/Platforms";
 
 const usePlatforms = () =>
   useData2<Platforms>("/platforms/lists/parents", "platforms");

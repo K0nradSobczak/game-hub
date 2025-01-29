@@ -1,5 +1,5 @@
 import {  useData2 } from "./data";
-import { Genre } from "../request/Genre";
+import Genre from "../request/Genre";
 
 const useGenre = () => useData2<Genre>('/genres', 'genre');
 export const findGenre = (id: number | undefined) =>{

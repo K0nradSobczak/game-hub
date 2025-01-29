@@ -1,9 +1,9 @@
 import storeGames  from "@/store/game-query";
-import { getAllRequest } from "@/request/getAllRequest";
+import getAllRequest from "@/request/getAllRequest";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { HttpClient } from "@/services/api-client";
 import ms from 'ms';
-import { Games } from "@/request/Game";
+import Games  from "@/request/Game";
 
 const client = new HttpClient<Games>("/games");
 const useGames = () => {

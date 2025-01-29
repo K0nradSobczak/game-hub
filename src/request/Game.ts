@@ -1,6 +1,6 @@
-import { Genre } from "@/request/Genre";
-import { Platforms } from "@/request/Platforms";
-export interface Games {
+import Genre from "@/request/Genre";
+import Platforms from "@/request/Platforms";
+interface Games {
   id: number;
   slug: string;
   name: string;
@@ -10,3 +10,4 @@ export interface Games {
   genre: Genre;
   rating_top: number;
 }
+export default Games;
