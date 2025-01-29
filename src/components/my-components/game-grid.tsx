@@ -3,7 +3,7 @@ import { SimpleGrid, Skeleton, Spinner, Text } from "@chakra-ui/react";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import GameCard from "./game-card";
-import {Games} from '@/request/Game'
+import Games from '@/request/Game'
 
 function GameGrid() {
 
